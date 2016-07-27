@@ -1,0 +1,57 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.1",
+  "description": "react ecosystem boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dll": "webpack --verbose --colors --display-error-details --config web/webpack/dll.config.js"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "immutable",
+    "es7"
+  ],
+  "author": "Joah",
+  "license": "ISC",
+  "dependencies": {
+    "font-awesome": "^4.6.3",
+    "react": "^15.2.1",
+    "react-bootstrap": "^0.29.5",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.5.2",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-form": "^5.3.1",
+    "superagent": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "bootstrap-loader": "^1.0.10",
+    "bootstrap-sass": "^3.3.6",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-loader": "^1.4.1",
+    "eslint-plugin-import": "^1.11.1",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^5.2.2",
+    "file-loader": "^0.9.0",
+    "font-awesome-webpack": "^0.0.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  }
+}
