@@ -2,22 +2,22 @@
  * Created by mac on 16/7/18.
  */
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import {Route} from 'react-router';
+import Index from "./components/index/index";
+// import Login from "./components/login/index";
 
-const rootRoute = {
-    childRoutes: [ {
-        path: '/',
-        // component: require('./components/App'),
-        childRoutes: [
-            // require('./routes/Calendar'),
-            // require('./routes/Course'),
-            // require('./routes/Grades'),
-            // require('./routes/Messages'),
-            // require('./routes/Profile')
-        ]
-    } ]
-};
 
-export default rootRoute;
+const routes = (
+  <Route path="/" component={Index}>
+    <Route path="login" getComponent={(nextState, cb) => {
+        require.ensure([], function (require) {
+            cb(null, require('./components/login/index'))
+        });
+    }}
+    />
+  </Route>
+);
+
+export default routes;
 
 //to dynamic load components, please refer to https://github.com/reactjs/react-router/blob/master/examples/huge-apps/app.js

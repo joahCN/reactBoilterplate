@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export default function clientMiddleware(client) {
   return ({dispatch, getState}) => {
     return next => action => {
@@ -5,7 +7,7 @@ export default function clientMiddleware(client) {
         return action(dispatch, getState);
       }
 
-      const { promise, types, ...rest } = action; // eslint-disable-line no-redeclare
+      const { promise, types, ...rest } = action;
       if (!promise) {
         return next(action);
       }

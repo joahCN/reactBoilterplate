@@ -2,11 +2,11 @@
  * Created by mac on 16/7/15.
  */
 import * as devConfig from "./dev";
-import * as prodConfig from "./prod"
+import * as prodConfig from "./prod";
 
 let apiConfig = {};
 
-if(process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
     apiConfig = prodConfig;
 } else {
     apiConfig = devConfig;
