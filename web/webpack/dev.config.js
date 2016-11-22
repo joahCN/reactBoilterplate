@@ -33,7 +33,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, exclude: /(node_modules|build)/, loaders: ['babel-loader', 'eslint-loader']},
+            { test: /\.jsx?$/, exclude: /(node_modules|build)/, loaders: ['babel-loader']}, //'eslint-loader'
             { test: /\.json$/, loader: 'json-loader' },
             { test: /\.less$/, loader: 'style!css?modules&importLoaders=1&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader!less?outputStyle=expanded&sourceMap' },
             { test: /\.scss$/, loader: 'style!css?modules&importLoaders=1&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader!sass?outputStyle=expanded&sourceMap' },
