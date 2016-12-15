@@ -10,13 +10,23 @@ import createStore from './store/index';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import * as middlewaresFactory from "./middleware/index";
+import rootSagas from "../sagas/index";
 
 import reduces from "../reducers/index";
 
 import routes from "../router";
 
-const store = createStore(reduces, browserHistory, window.__data);
+let sagasMiddleware = middlewaresFactory.getSagasMiddleware();
+let middlewares = [
+    middlewaresFactory.getRouterMiddleware(browserHistory),
+    sagasMiddleware
+];
+
+const store = createStore(reduces, middlewares, window.__data);
 const history = syncHistoryWithStore(browserHistory, store);
+
+sagasMiddleware.run(rootSagas);
 
 const component = (
     <Router history={history} routes={routes} />

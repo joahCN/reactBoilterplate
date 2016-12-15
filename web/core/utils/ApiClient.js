@@ -4,6 +4,8 @@ import config from '../config/index';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
+const __SERVER__ = false;
+
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
   if (__SERVER__) {
@@ -11,10 +13,10 @@ function formatUrl(path) {
     return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
   }
   // Prepend `/api` to relative URL, to proxy to API server.
-  return '/api' + adjustedPath;
+  return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
 }
 
-export default class ApiClient {
+class ApiClient {
   constructor(req) {
     methods.forEach((method) =>
       this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
@@ -47,3 +49,5 @@ export default class ApiClient {
    */
   empty() {}
 }
+
+export default new ApiClient();

@@ -7,6 +7,9 @@ import {bootstrap} from "../../core/ui/index";
 import {connect} from "react-redux";
 import {login} from "../../reducers/user";
 import { Field, reduxForm } from 'redux-form';
+import selectors from '../../selectors/index';
+import actions from '../../actions/index'
+
 
 let {Form, FormGroup, ControlLabel, FormControl, Checkbox, Button, Col} = bootstrap;
 
@@ -19,10 +22,10 @@ const ReduxFormControl = (props) => {
 
 @connect(
     state => ({
-        loginUser: state.user.loginUser,
+        loginUser: selectors.user.getLoginUser(state),
         loginForm: state.form.loginForm
     }),
-    {login}
+    {login: actions.user.login}
 )
 @reduxForm({
     form: "loginForm"
@@ -30,9 +33,9 @@ const ReduxFormControl = (props) => {
 export default class Login extends React.Component {
 
     login(values) {
-        // this.props.login({
-        //     userName: "joah"
-        // });
+        this.props.login({
+            userName: "joah"
+        });
 
     }
     

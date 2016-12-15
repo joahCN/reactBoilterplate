@@ -7,9 +7,12 @@ import { reducer as formReducer } from 'redux-form'
 
 import user from './user';
 
+export const PATHS = {
+    user: 'user'
+};
 
 export default combineReducers({
     routing: routerReducer,
     form: formReducer,
-    user
+    [PATHS.user]: user
 });

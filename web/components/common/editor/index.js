@@ -44,6 +44,17 @@ export default class MyEditor extends React.Component {
 
     selectFile(event) {
         this.file = event.target.files[0];
+        let filename = this.file.name;
+        if(/\.(jpg|jpeg|png)$/.test(filename)) {
+            let reader = new FileReader();
+            reader.onload = () =>{
+                console.log("reading success");
+                this.setState({
+                    imgUrl: reader.result
+                });
+            };
+            reader.readAsDataURL(this.file);
+        }
 
     }
 
@@ -60,10 +71,11 @@ export default class MyEditor extends React.Component {
             console.log(error);
         };
 
-        // let formData = new FormData();
-        // formData.append("file", this.file, "myFile");
+        let formData = new FormData();
+        formData.append("file", this.file, this.file.name);
 
-        xhr.send(this.file);
+        // xhr.send(this.file);
+        xhr.send(formData);
     }
 
     render() {
@@ -71,6 +83,7 @@ export default class MyEditor extends React.Component {
         return (
             <div>
                 <input type="file" name="file" onChange={::this.selectFile}/>
+                <img src={this.state.imgUrl}/>
                 <button onClick={::this.uploadFile}>upload</button>
             </div>
         );

@@ -1,17 +1,23 @@
-import { createStore as _createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import createMiddleware from '../utils/clientMiddleware';
-import { routerMiddleware } from 'react-router-redux';
-import ApiClient from '../utils/ApiClient';
 
-const apiClient = new ApiClient();
+// import ApiClient from '../utils/ApiClient';
 
-export default function createStore(reducer, history, initialData) {
+// const apiClient = new ApiClient();
+
+export default function (reducer, middlewares, initialData) {
     // Sync dispatched route actions to the history
-    const reduxRouterMiddleware = routerMiddleware(history);
+    // const reduxRouterMiddleware = routerMiddleware(history);
+    //createMiddleware(apiClient), 
+    // const sagaMiddleware = createSagaMiddleware();
+    // const middleware = [reduxRouterMiddleware];
 
-    const middleware = [createMiddleware(apiClient), reduxRouterMiddleware];
+    // const finalCreateStore = applyMiddleware(...middlewares)(_createStore);
+    // return finalCreateStore(reducer, initialData);
 
-    const finalCreateStore = applyMiddleware(...middleware)(_createStore);
+    return createStore(
+        reducer,
+        applyMiddleware(...middlewares)
+    )
 
-    return finalCreateStore(reducer, initialData);
 }
