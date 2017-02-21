@@ -20,8 +20,9 @@ module.exports = {
     context: path.resolve(__dirname, '..'),
     entry: {
         'main': [
-            'bootstrap-loader',
-            'font-awesome-webpack!'+fontawesomeConfig,
+            'webpack/hot/only-dev-server',
+            'react-hot-loader/patch',
+            // 'font-awesome-webpack!'+fontawesomeConfig,
             './bootstrap.js'
         ]
     },
@@ -68,16 +69,16 @@ module.exports = {
                 'NODE_ENV': '"development"'
             }
         }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery"
-        }),
+        // new webpack.ProvidePlugin({
+        //     $: "jquery",
+        //     jQuery: "jquery",
+        //     "window.jQuery": "jquery"
+        // }),
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('../build/dll-manifest.json')
         })
-        // hot reload
+        //either adding --hot in command line or using the following constructor
         // new webpack.HotModuleReplacementPlugin()
     ]
 };

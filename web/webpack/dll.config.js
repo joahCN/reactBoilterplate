@@ -7,7 +7,7 @@ var assetsPath = path.resolve(__dirname, '../build');
 
 module.exports = {
     entry: {
-        'dll': ['react', 'react-dom', 'react-router', 'react-bootstrap', 'redux', 'redux-form', 'react-redux', 'superagent', 'jquery']
+        'dll': ['react', 'react-dom', 'react-router', 'react-bootstrap', 'redux', 'redux-form', 'react-redux', 'superagent']
     },
 
     output: {

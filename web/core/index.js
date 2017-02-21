@@ -15,7 +15,7 @@ import rootSagas from "../sagas/index";
 
 import reduces from "../reducers/index";
 
-import routes from "../router";
+import getRoutes from "../router";
 
 let sagasMiddleware = middlewaresFactory.getSagasMiddleware();
 let middlewares = [
@@ -29,7 +29,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 sagasMiddleware.run(rootSagas);
 
 const component = (
-    <Router history={history} routes={routes} />
+    <Router history={history} routes={getRoutes(store.getState())} />
 );
 
 export default function mount(dest) {

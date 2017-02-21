@@ -20,6 +20,12 @@ const ReduxFormControl = (props) => {
     )
 };
 
+// export default class Login extends React.Component {
+//     render() {
+//         return <div>Login Form.</div>
+//     }
+// }
+
 @connect(
     state => ({
         loginUser: selectors.user.getLoginUser(state),
@@ -38,7 +44,7 @@ export default class Login extends React.Component {
         });
 
     }
-    
+
     render() {
         const { handleSubmit, pristine, reset, submitting } = this.props;
         return (

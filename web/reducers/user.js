@@ -2,9 +2,9 @@
 // import Immutable from "immutable";
 
 let initialState = {
-    loginUser: {
-        name: ""
-    }
+    // loginUser: {
+    //     name: ""
+    // }
 };
 
 export default (state = initialState, action = {})=>{
